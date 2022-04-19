@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'lib-my-kewl-lib',
-  template: `
-    <p>
-      my-kewl-lib works!
-    </p>
-  `,
+  templateUrl: 'my-kewl-lib.component.html',
   styles: [
   ]
 })
