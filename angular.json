@@ -3,115 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-spa": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
-      "root": "projects/my-spa",
-      "sourceRoot": "projects/my-spa/src",
-      "prefix": "app",
+    "my-kewl-lib": {
+      "projectType": "library",
+      "root": "projects/my-kewl-lib",
+      "sourceRoot": "projects/my-kewl-lib/src",
+      "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "outputPath": "dist/my-spa",
-            "index": "projects/my-spa/src/index.html",
-            "main": "projects/my-spa/src/main.ts",
-            "polyfills": "projects/my-spa/src/polyfills.ts",
-            "tsConfig": "projects/my-spa/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/my-spa/src/favicon.ico",
-              "projects/my-spa/src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/my-spa/src/styles.scss"
-            ],
-            "scripts": []
+            "project": "projects/my-kewl-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/my-spa/src/environments/environment.ts",
-                  "with": "projects/my-spa/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
+              "tsConfig": "projects/my-kewl-lib/tsconfig.lib.prod.json"
             },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "tsConfig": "projects/my-kewl-lib/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "my-spa:build:production"
-            },
-            "development": {
-              "browserTarget": "my-spa:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "my-spa:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/my-spa/src/test.ts",
-            "polyfills": "projects/my-spa/src/polyfills.ts",
-            "tsConfig": "projects/my-spa/tsconfig.spec.json",
-            "karmaConfig": "projects/my-spa/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/my-spa/src/favicon.ico",
-              "projects/my-spa/src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/my-spa/src/styles.scss"
-            ],
-            "scripts": []
+            "main": "projects/my-kewl-lib/src/test.ts",
+            "tsConfig": "projects/my-kewl-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/my-kewl-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/my-spa/**/*.ts",
-              "projects/my-spa/**/*.html"
+              "projects/my-kewl-lib/**/*.ts",
+              "projects/my-kewl-lib/**/*.html"
             ]
           }
         }
@@ -233,49 +159,119 @@
         }
       }
     },
-    "my-kewl-lib": {
-      "projectType": "library",
-      "root": "projects/my-kewl-lib",
-      "sourceRoot": "projects/my-kewl-lib/src",
-      "prefix": "lib",
+    "my-spa": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/my-spa",
+      "sourceRoot": "projects/my-spa/src",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "project": "projects/my-kewl-lib/ng-package.json"
+            "outputPath": "dist/my-spa",
+            "index": "projects/my-spa/src/index.html",
+            "main": "projects/my-spa/src/main.ts",
+            "polyfills": "projects/my-spa/src/polyfills.ts",
+            "tsConfig": "projects/my-spa/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/my-spa/src/favicon.ico",
+              "projects/my-spa/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/my-spa/src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/my-kewl-lib/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/my-spa/src/environments/environment.ts",
+                  "with": "projects/my-spa/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "tsConfig": "projects/my-kewl-lib/tsconfig.lib.json"
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
         },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "my-spa:build:production"
+            },
+            "development": {
+              "browserTarget": "my-spa:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "my-spa:build"
+          }
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/my-kewl-lib/src/test.ts",
-            "tsConfig": "projects/my-kewl-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/my-kewl-lib/karma.conf.js"
+            "main": "projects/my-spa/src/test.ts",
+            "polyfills": "projects/my-spa/src/polyfills.ts",
+            "tsConfig": "projects/my-spa/tsconfig.spec.json",
+            "karmaConfig": "projects/my-spa/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/my-spa/src/favicon.ico",
+              "projects/my-spa/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/my-spa/src/styles.scss"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/my-kewl-lib/**/*.ts",
-              "projects/my-kewl-lib/**/*.html"
+              "projects/my-spa/**/*.ts",
+              "projects/my-spa/**/*.html"
             ]
           }
         }
       }
     }
-  },
-  "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
-  },
-  "defaultProject": "my-spa"
+  }
 }
