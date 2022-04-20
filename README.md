@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Bowman comments
+
+Open two bash shells.  In one of them, navigate to the `projects/my-kewl-lib` folder, then run `ng build --watch` to build the library and watch for instant file changes (which will rebuild the library on the fly).
+
+In the other bash shell, simply run `ng serve` and you will see that `my-spa` is built and served up into the browser.
+
+Run `nx graph` to fire up the graph tree in nx.
+
+Enjoy
